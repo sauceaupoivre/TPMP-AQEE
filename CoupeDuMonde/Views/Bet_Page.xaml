@@ -1,0 +1,108 @@
+<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CoupeDuMonde"
+      xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="CoupeDuMonde.Bet_Page"
+      MinWidth="800" Width="800" MaxWidth="800"
+      MinHeight="450" Height="432" MaxHeight="450"
+      mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+      Title="Pari"
+      Background="#ececec">
+    <Grid>
+        <Grid x:Name="main" Visibility="Visible">
+            <Border Background="#FFF9F9F9" BorderBrush="Black" BorderThickness="1" CornerRadius="0,0,0,0" Margin="10,83,496,10">
+                <DataGrid x:Name="list" Visibility="Visible" AutoGenerateColumns="False" Margin="-1,35,-1,34" SelectionChanged="List_SelectionChanged" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn FontSize="18" Width="2*" Header="Nom" Binding="{Binding Heading}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+            <DataGrid x:Name="liste_defis" Visibility="Hidden"  AutoGenerateColumns="False" Margin="10,118,496,45" SelectionChanged="Liste_defis_SelectionChanged" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="18" Width="2*" Header="Nom" Binding="{Binding Heading}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Border Background="#FFAEAEAE" BorderBrush="Black" BorderThickness="1,1,1,0"  Margin="10,83,496,332">
+                <TextBlock TextWrapping="Wrap" Height="30" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20"><Run Language="fr-fr" Text="Pari"/></TextBlock>
+            </Border>
+            <Button x:Name="btn_addbet" Content="+ classique" HorizontalAlignment="Left" Margin="58,57,0,0" VerticalAlignment="Top" Height="26" Width="93" BorderThickness="1,1,1,0" FontSize="16" Background="#FF24B34B" Click="btn_addbet_Click"/>
+            <Button x:Name="btn_defis" Content="+ spécial" HorizontalAlignment="Left" Margin="157,57,0,0" VerticalAlignment="Top" Height="26" Width="93" BorderThickness="1,1,1,0" FontSize="16" Background="#FFF8A602" Click="btn_defis_Click"/>
+            <mah:HamburgerMenu Content="HamburgerMenu" HorizontalAlignment="Left" Height="3" Margin="110,88,0,0" VerticalAlignment="Top" Width="10"/>
+            <Button Content="Spéciaux" HorizontalAlignment="Left" Margin="157,405,0,0" VerticalAlignment="Top" Height="35" Width="147" Click="Button_Click_1"/>
+            <Button Content="Classiques" HorizontalAlignment="Left" Margin="10,405,0,0" VerticalAlignment="Top" Height="35" Width="147" Click="Button_Click"/>
+
+        </Grid>
+        <Grid x:Name="edit_challenge" Margin="304,83,0,10" Background="#FFF9F9F9" Visibility="Hidden">
+            <Border  BorderBrush="Black" Background="#ececec" BorderThickness="2,2,2,0" Margin="352,215,36,112"/>
+            <TextBox KeyDown="OnKeyDownHandler" x:Name="txtbox_libelle1"  HorizontalAlignment="Center" Margin="0,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="476" Height="34" TextAlignment="Center" FontSize="22" Text="..."/>
+      
+            <TextBox  KeyDown="OnKeyDownHandler" x:Name="txtbox_pointpossible"  HorizontalAlignment="Left" Margin="152,0,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" Width="64" FontSize="20" TextAlignment="Center"/>
+            <Label Content="Points possible :" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="18"/>
+            <TextBox KeyDown="OnKeyDownHandler" x:Name="txtbox_tranche"  HorizontalAlignment="Left" Margin="168,238,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="64" FontSize="20" TextAlignment="Center"/>
+            <TextBox KeyDown="OnKeyDownHandler" x:Name="txtbox_ecrat"  HorizontalAlignment="Left" Margin="402,121,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="64" FontSize="20" TextAlignment="Center"/>
+            <Label Content=" Points d'écarts :" HorizontalAlignment="Left" Margin="260,121,0,0" VerticalAlignment="Top" FontSize="18"/>
+            <Label Content="Tranche négative :" HorizontalAlignment="Left" Margin="10,233,0,0" VerticalAlignment="Top" FontSize="18"/>
+            <Label Content="Date De Fin" HorizontalAlignment="Left" Margin="352,215,0,0" VerticalAlignment="Top" FontSize="18" Height="30" Width="108"/>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="352,245,36,59">
+                <DatePicker x:Name="tbx_date" KeyDown="OnKeyDownHandler"/>
+            </Border>
+
+        </Grid>
+
+        <Grid x:Name="edit_bet" Margin="304,83,0,10" Background="#FFF9F9F9" Visibility="Visible">
+            <Border BorderBrush="Black" Background="#ececec" BorderThickness="2,2,2,0" Margin="303,215,36,112"/>
+            <CheckBox Content="GAGNER" HorizontalAlignment="Left" Margin="21,133,0,0" VerticalAlignment="Top" FontSize="16" Height="22" Width="88"/>
+            <CheckBox Content="GAGNER" HorizontalAlignment="Left" Margin="372,133,0,0" VerticalAlignment="Top" FontSize="16" Height="22" Width="88"/>
+            <CheckBox Content="NUL" HorizontalAlignment="Left" Margin="196,133,0,0" VerticalAlignment="Top" FontSize="16" Height="22" Width="88"/>
+            <Label Content="Points possible :" HorizontalAlignment="Left" Margin="21,241,0,0" VerticalAlignment="Top" FontSize="18"/>
+            <TextBox KeyDown="OnKeyDownHandler" x:Name="txtbox_points" HorizontalAlignment="Left" Margin="163,244,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="63" FontSize="20" TextAlignment="Center"/>
+            <Label Content="Date De Fin" HorizontalAlignment="Left" Margin="328,215,0,0" VerticalAlignment="Top" FontSize="18" Height="30" Width="106"/>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="303,245,36,44">
+                <DatePicker x:Name="bt_date"  RenderTransformOrigin="0.514,0.686" Margin="0,-1,0,0" KeyDown="OnKeyDownHandler"/>
+            </Border>
+            <TextBox x:Name="txtbox_equipe" HorizontalAlignment="Center" Margin="0,51,0,0" TextWrapping="Wrap" Text="..." VerticalAlignment="Top" Width="476" Height="34" TextAlignment="Center" FontSize="22" KeyDown="OnKeyDownHandler" />
+
+
+
+        </Grid>
+        <Grid x:Name="add_bet"
+              Background="#FFC7C7C7" Margin="77,61,77,61" Visibility="Hidden">
+            <Label Content="LIBELLE DU PARI :" HorizontalAlignment="Left" Margin="61,10,0,0" VerticalAlignment="Top" FontSize="22" Width="184"/>
+            <Label Content="Point possible :" HorizontalAlignment="Left" Margin="373,252,0,0" VerticalAlignment="Top" FontSize="18"/>
+            <Button x:Name="btn_create_bet" Content="Valider" HorizontalAlignment="Left" Margin="534,295,0,0" VerticalAlignment="Top" Height="28" Width="102" Background="#FF24B348" FontSize="16" Click="btn_create_bet_Click"/>
+            <TextBox x:Name="txtbox_libelle" Margin="0,49,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="524" Height="37" FontSize="24" HorizontalAlignment="Center" BorderThickness="1,1,1,1" BorderBrush="Black"/>
+            <TextBox x:Name="txtbox_point" HorizontalAlignment="Left" Margin="514,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" Height="25" FontSize="17" TextAlignment="Center" Text="" BorderBrush="Black"/>
+            <Button x:Name="btn_annuler" Content="Annuler" HorizontalAlignment="Left" Margin="416,295,0,0" VerticalAlignment="Top" Height="28" Width="100" Background="#FFFBA602" FontSize="16" Click="btn_annuler_Click"/>
+            <CheckBox x:Name="IsEliminatoire" Content="Eliminatoire" Margin="268,164,268,141" FontSize="16"/>
+            <Label Content="Date De Fin" HorizontalAlignment="Left" Margin="99,196,0,0" VerticalAlignment="Top" FontSize="18" Height="38" Width="108" BorderThickness="1,1,1,1" BorderBrush="Black"/>
+            <DatePicker x:Name="tb_dates" HorizontalAlignment="Left" Margin="99,234,0,0" VerticalAlignment="Top" Height="44" Width="108" DisplayDate="2003-12-15"/>
+
+        </Grid>
+        <Grid x:Name="add_challenge"
+            Margin="77,61,77,61" Background="#FFC7C7C7" Visibility="Hidden">
+            <Label Content="CRÉATION DE PARI SPÉCIAL" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="43" Width="300" FontSize="24" BorderThickness="0,0,0,2" BorderBrush="Black"/>
+            <Label Content="INTITULÉ DU DÉFIS :" HorizontalAlignment="Left" Margin="38,53,0,0" VerticalAlignment="Top" Width="177" FontSize="18"/>
+            <TextBox x:Name="txt_libelle" HorizontalAlignment="Center" Margin="0,92,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="570" Height="34" FontSize="16" BorderBrush="Black"/>
+            <Label Content="Points possible :" HorizontalAlignment="Left" Margin="22,155,0,0" VerticalAlignment="Top" Width="138" FontSize="18"/>
+            <TextBox x:Name="txt_point" HorizontalAlignment="Left" Margin="160,164,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="58" Height="25" TextAlignment="Center" FontSize="16" BorderBrush="Black"/>
+
+            <Label Content="Tranche négative :" HorizontalAlignment="Left" Margin="378,155,0,0" VerticalAlignment="Top" Width="158" FontSize="18"/>
+            <TextBox x:Name="txt_tranche" HorizontalAlignment="Left" Margin="541,164,0,0" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" Width="67" Height="25" FontSize="16" TextAlignment="Center" BorderBrush="Black"/>
+            <Button x:Name="btn_annuler_defis"  Content="Annuler" HorizontalAlignment="Left" Margin="416,295,0,0" VerticalAlignment="Top" Height="28" Width="100" Background="#FFFBA602" FontSize="16" Click="btn_annuler_challenge_Click"/>
+            <Button x:Name="btn_valider_defis" Content="Valider" HorizontalAlignment="Left" Margin="534,295,0,0" VerticalAlignment="Top" Height="28" Width="102" Background="#FF24B348" FontSize="16" Click="btn_valider_defis_Click"/>
+            <TextBox TextWrapping="Wrap" Background="#FFAEAEAE" FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Top" Height="39" Width="119" BorderThickness="2,2,2,1" Margin="230,207,0,0" TextAlignment="Center" BorderBrush="Black"/>
+            <TextBlock TextWrapping="Wrap" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="20" Margin="239,210,0,0" Width="110" RenderTransformOrigin="0.507,0.516"><Run Language="fr-fr" Text="Date de Fin"/></TextBlock>
+            <Border Background="White" BorderBrush="Black" BorderThickness="1,1,1,1"  Margin="230,246,297,34">
+                <DatePicker x:Name="txt_bts" Margin="-1,-1,-1,-1"/>
+            </Border>
+            <TextBox HorizontalAlignment="Left" x:Name="txt_ecart" Margin="541,207,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="67" Height="25" TextAlignment="Center" BorderBrush="#FF020202" FontSize="16"/>
+            <Label Content="Points d'écarts :" HorizontalAlignment="Left" Margin="397,203,0,0" VerticalAlignment="Top" Width="139" FontSize="18"/>
+        </Grid>
+
+
+
+    </Grid>
+
+</Page>

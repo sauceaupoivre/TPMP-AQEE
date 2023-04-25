@@ -1,0 +1,115 @@
+﻿<Page x:Class="CoupeDuMonde.Classement"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+     MinWidth="800" Width="800" MaxWidth="700"
+      MinHeight="450" Height="200" MaxHeight="300"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+      xmlns:local="clr-namespace:CoupeDuMonde"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Classement" 
+      Background="#ececec">
+
+    <Grid>
+        <Grid x:Name="Grid_Rank">
+            <DataGrid x:Name="datagrid_classroom"
+          AutoGenerateColumns="False" Margin="0,32,258,0" BorderBrush="#FF040404" BorderThickness="0.5,0.5,0.5,0.5" Background="White" SelectedCellsChanged="datagrid_classroom_SelectedCellsChanged" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Numéro" Width="2*" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Classes" Width="2*" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Nb Joueurs" Width="2*" Binding="{Binding ElementName=datagrid_classroom, Path=CurrentCell.Item.Users.Count}">
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid x:Name="Datagrid_GlobalRanking"
+          AutoGenerateColumns="False" Margin="542,32,0,269" BorderBrush="Black" BorderThickness="0.5,0.5,0.5,0.5" Background="White" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Joueurs" Width="2*" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Points" Width="2*" Binding="{Binding Points}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <DataGrid x:Name="Datagrid_ClassRanking"
+          AutoGenerateColumns="False" Margin="542,213,0,0" BorderThickness="0.5,0.5,0.5,0.5" Background="White" BorderBrush="Black" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Classes" Width="2*" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Points" Width="2*" Binding="{Binding ClassPoints}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Grid HorizontalAlignment="Right" Height="32" VerticalAlignment="Top" Width="258">
+
+                <Border BorderBrush="Black" BorderThickness="0.5,0.5,0,0.5" Background="#FFECECEC">
+                    <TextBlock TextWrapping="Wrap" Text="CLASSEMENT : GLOBAL" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+
+                </Border>
+                <Button x:Name="Btn_ExportGlobal" Content="Export" HorizontalAlignment="Left" Margin="179,0,0,0" VerticalAlignment="Center" Width="69" Click="Btn_ExportGlobal_Click" Background="#FF24B348" Foreground="White" BorderBrush="Black" BorderThickness="0.5,0.5,0.5,0.5" FontWeight="Bold" UseLayoutRounding="False"/>
+
+            </Grid>
+
+            <Border BorderBrush="#FF312727" BorderThickness="0.5" Margin="542,181,0,237" Background="#FFECECEC">
+                <TextBlock TextWrapping="Wrap" Text="CLASSEMENT : CLASSES" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            </Border>
+            <Button x:Name="Btn_ExportClassrooms" Content="Export" HorizontalAlignment="Left" Margin="721,188,0,0" VerticalAlignment="Top" Width="69" Click="Btn_ExportClassrooms_Click" Background="#FF24B348" Foreground="White" BorderBrush="Black" BorderThickness="0.5,0.5,0.5,0.5" FontWeight="Bold" UseLayoutRounding="False"/>
+
+            <Grid HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="542">
+                <Border BorderBrush="Black" BorderThickness="0.5" Background="#FFECECEC">
+
+                    <TextBlock TextWrapping="Wrap" Text="CLASSEMENT" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
+
+
+                </Border>
+                <Button x:Name="Btn_AddClassroom" Content="Ajouter Promotion" HorizontalAlignment="Left" Margin="132,0,0,0" VerticalAlignment="Center" Width="124" Click="Btn_AddClassroom_Click" Background="#FF24B348" Foreground="White" BorderBrush="Black" BorderThickness="0.5,0.5,0.5,0.5" FontWeight="Bold" UseLayoutRounding="False"/>
+                <Button x:Name="Btn_UpdateClassroom" Content="Modifier Promotion" HorizontalAlignment="Left" Margin="271,0,0,0" VerticalAlignment="Center" Width="124" Click="Btn_UpdateClassroom_Click" Background="#FFFBC329" Foreground="#FF080808" BorderBrush="Black" BorderThickness="0.5,0.5,0.5,0.5" FontWeight="Bold" UseLayoutRounding="False" IsEnabled="False"/>
+                <Button x:Name="Btn_DeleteClassroom" Content="Supprimer" HorizontalAlignment="Left" Margin="408,0,0,0" VerticalAlignment="Center" Width="124" Click="Btn_DeleteClassroom_Click" Background="#FFB2242B" Foreground="Black" BorderBrush="Black" BorderThickness="0.5,0.5,0.5,0.5" FontWeight="Bold" UseLayoutRounding="False" IsEnabled="False"/>
+
+
+
+            </Grid>
+        </Grid>
+
+        <Grid x:Name="Grid_AddClassroom" Visibility="Collapsed">
+            <Border HorizontalAlignment="Center" Height="380" VerticalAlignment="Center" Width="706" OpacityMask="Black" BorderThickness="0.5,0.5,0.5,0.5" BorderBrush="Black" CornerRadius="5,5,5,5" Background="#FFECECEC"/>
+
+            <Label Content="Ajouter une promotion" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+            <Label Content="Nom de la promotion :" HorizontalAlignment="Left" Margin="102,103,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="TextBox_PromoName" HorizontalAlignment="Center" Margin="0,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="324" TextChanged="TextBox_PromoName_TextChanged"/>
+            <Label Content="Joueurs :" HorizontalAlignment="Left" Margin="176,129,0,0" VerticalAlignment="Top"/>
+
+            <DataGrid x:Name="DataGrid_AllPlayers"
+                AutoGenerateColumns="False" Margin="238,130,238,216" BorderThickness="0.5,0.5,0.5,0.5" Background="White" BorderBrush="Black" SelectedCellsChanged="DataGrid_AllPlayers_SelectedCellsChanged" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Prénom" Width="2*" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding LastName}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="Btn_AddPlayers" Margin="270,239,270,193" Content="Ajouter" IsEnabled="False" Click="Btn_AddPlayers_Click"/>
+
+
+            <Label Content="Joueurs ajoutés :" HorizontalAlignment="Left" Margin="135,261,0,0" VerticalAlignment="Top"/>
+            <DataGrid x:Name="Datagrid_AddedPlayers"
+                AutoGenerateColumns="False" Margin="238,262,238,98" BorderThickness="0.5,0.5,0.5,0.5" Background="White" BorderBrush="Black" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Prénom" Width="2*" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Nom" Width="2*" Binding="{Binding LastName}"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+            <Button x:Name="Btn_CancelClassroom" Content="Annuler" HorizontalAlignment="Left" Margin="615,381,0,0" VerticalAlignment="Top" Click="Btn_CancelClassroom_Click"/>
+            <Button x:Name="Btn_SaveClassroom" Content="Enregistrer" HorizontalAlignment="Left" Margin="668,381,0,0" VerticalAlignment="Top" Click="Btn_SaveClassroom_Click" IsEnabled="False"/>
+        </Grid>
+
+        <Grid x:Name="Grid_UpdateClassroom" Visibility="Collapsed">
+            <Border HorizontalAlignment="Center" Height="200" VerticalAlignment="Top" Width="706" OpacityMask="Black" BorderThickness="0.5,0.5,0.5,0.5" BorderBrush="Black" CornerRadius="5,5,5,5" Background="#FFECECEC" Margin="0,47,0,0"/>
+
+            <Label Content="Modifier la promotion" HorizontalAlignment="Center" Margin="0,47,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="18"/>
+            <Label Content="Nom de la promotion :" HorizontalAlignment="Left" Margin="102,103,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="TextBox_UpdatePromoName" HorizontalAlignment="Center" Margin="0,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="324" TextChanged="TextBox_UpdatePromoName_TextChanged"/>
+
+            <Button x:Name="Btn_CancelUpdateClassroom" Content="Annuler" HorizontalAlignment="Left" Margin="615,205,0,0" VerticalAlignment="Top" Click="Btn_CancelUpdateClassroom_Click"/>
+            <Button x:Name="Btn_SaveUpdateClassroom" Content="Enregistrer" HorizontalAlignment="Left" Margin="668,205,0,0" VerticalAlignment="Top" Click="Btn_SaveUpdateClassroom_Click" IsEnabled="False"/>
+        </Grid>
+
+
+    </Grid>
+</Page>
