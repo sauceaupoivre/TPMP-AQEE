@@ -25,7 +25,7 @@ namespace CoupeDuMonde.Views
         {
             InitializeComponent();
 
-            Lbl_Test.Content = AdoClassroom.GetCurrentDomainPath();
+           
            
         }
     }
