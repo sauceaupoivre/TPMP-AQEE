@@ -5,7 +5,9 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoupeDuMonde", "CoupeDuMonde\CoupeDuMonde.csproj", "{2DEE04D2-1D17-4A5D-A20A-D3BFF1DAEF3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoupeDuMondeTests", "CoupeDuMondeTests\CoupeDuMondeTests.csproj", "{551362F5-86F1-4AE6-9814-90AB8305A91D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoupeDuMondeTests", "CoupeDuMondeTests\CoupeDuMondeTests.csproj", "{551362F5-86F1-4AE6-9814-90AB8305A91D}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{1D5672BC-E2E0-42E8-AC97-6FC1A1065CB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,8 @@ Global
 		{551362F5-86F1-4AE6-9814-90AB8305A91D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{551362F5-86F1-4AE6-9814-90AB8305A91D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{551362F5-86F1-4AE6-9814-90AB8305A91D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D5672BC-E2E0-42E8-AC97-6FC1A1065CB4}.Debug|Any CPU.ActiveCfg = Debug
+		{1D5672BC-E2E0-42E8-AC97-6FC1A1065CB4}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
