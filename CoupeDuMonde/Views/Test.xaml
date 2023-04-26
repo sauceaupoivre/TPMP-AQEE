@@ -9,7 +9,9 @@
       Title="Test">
 
     <Grid Background="White">
-        <Label x:Name="Lbl_Test" Content="Label" HorizontalAlignment="Left" Margin="262,211,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Lbl_Test" Content="Amaury RICHARD DE VESVROTTE (Chef d'équipe) ♕" HorizontalAlignment="Center" Margin="0,162,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="Lbl_Test_Copy" Content="Quentin COURROY" HorizontalAlignment="Center" Margin="0,199,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="Lbl_Test_Copy1" Content="Enzo DA SILVA RIBEIRO" HorizontalAlignment="Center" Margin="0,244,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </Page>

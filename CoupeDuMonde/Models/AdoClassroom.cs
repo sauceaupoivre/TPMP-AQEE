@@ -28,7 +28,7 @@ namespace CoupeDuMonde.Models
             {
 
                 Console.WriteLine(Ex.Message);
-                return "prout";
+                return "";
 
             }
 
