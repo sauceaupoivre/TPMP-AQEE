@@ -39,6 +39,7 @@ namespace CoupeDuMonde
             edit_bet.IsEnabled = false;
             edit_bet.Opacity = 0.5;
             add_bet.Visibility = Visibility.Visible;
+            
         }
 
         private void btn_annuler_Click(object sender, RoutedEventArgs e)
@@ -234,5 +235,15 @@ namespace CoupeDuMonde
             }
 
         }
-	}
+
+        private void btn_supp_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Êtes vous sûr ?", "Attention", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                MainWindow.betcl.Remove((CommonBet)(list.SelectedItem as Bet));
+                list.Items.Refresh();
+            }
+        }
+    }
 }

@@ -32,12 +32,13 @@
             <mah:HamburgerMenu Content="HamburgerMenu" HorizontalAlignment="Left" Height="3" Margin="110,88,0,0" VerticalAlignment="Top" Width="10"/>
             <Button Content="Spéciaux" HorizontalAlignment="Left" Margin="157,405,0,0" VerticalAlignment="Top" Height="35" Width="147" Click="Button_Click_1"/>
             <Button Content="Classiques" HorizontalAlignment="Left" Margin="10,405,0,0" VerticalAlignment="Top" Height="35" Width="147" Click="Button_Click"/>
+            <Button x:Name="btn_supp" Content="Supprimer" HorizontalAlignment="Left" Margin="697,57,0,0" VerticalAlignment="Top" Height="26" Width="93" BorderThickness="1,1,1,0" FontSize="16" Background="#FF0000" Click="btn_supp_Click"/>
 
         </Grid>
         <Grid x:Name="edit_challenge" Margin="304,83,0,10" Background="#FFF9F9F9" Visibility="Hidden">
             <Border  BorderBrush="Black" Background="#ececec" BorderThickness="2,2,2,0" Margin="352,215,36,112"/>
             <TextBox KeyDown="OnKeyDownHandler" x:Name="txtbox_libelle1"  HorizontalAlignment="Center" Margin="0,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="476" Height="34" TextAlignment="Center" FontSize="22" Text="..."/>
-      
+
             <TextBox  KeyDown="OnKeyDownHandler" x:Name="txtbox_pointpossible"  HorizontalAlignment="Left" Margin="152,0,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Center" Width="64" FontSize="20" TextAlignment="Center"/>
             <Label Content="Points possible :" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="18"/>
             <TextBox KeyDown="OnKeyDownHandler" x:Name="txtbox_tranche"  HorizontalAlignment="Left" Margin="168,238,0,0" TextWrapping="Wrap" Text=" " VerticalAlignment="Top" Width="64" FontSize="20" TextAlignment="Center"/>
